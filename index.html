@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes App</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <p class="eyebrow">Notes App Fullstack</p>
+        <h1>Kelola catatan harianmu secara lokal</h1>
+        <p class="hero-text">
+          Tambah, edit, lihat, dan hapus catatan melalui frontend sederhana
+          tanpa framework yang terhubung langsung ke Express.js dan MySQL.
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="panel form-panel">
+          <div class="panel-heading">
+            <h2 id="form-title">Tambah Catatan</h2>
+            <p id="form-subtitle">Isi form untuk membuat catatan baru.</p>
+          </div>
+
+          <form id="note-form">
+            <input type="hidden" id="note-id" />
+
+            <label for="judul">Judul</label>
+            <input
+              type="text"
+              id="judul"
+              name="judul"
+              placeholder="Contoh: Rencana Belajar"
+              required
+            />
+
+            <label for="isi">Isi Catatan</label>
+            <textarea
+              id="isi"
+              name="isi"
+              rows="8"
+              placeholder="Tulis isi catatan di sini..."
+              required
+            ></textarea>
+
+            <div class="actions">
+              <button type="submit" id="submit-button">Simpan Catatan</button>
+              <button type="button" id="cancel-button" class="secondary hidden">
+                Batal Edit
+              </button>
+            </div>
+          </form>
+
+          <p id="status-message" class="status-message"></p>
+        </article>
+
+        <article class="panel list-panel">
+          <div class="panel-heading">
+            <h2>Daftar Catatan</h2>
+            <p>Data akan diperbarui langsung dari backend.</p>
+          </div>
+
+          <div id="notes-list" class="notes-list"></div>
+        </article>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
