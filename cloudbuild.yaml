@@ -41,10 +41,10 @@ images:
 
 # Substitution variables (isi di trigger Cloud Build atau saat manual trigger)
 substitutions:
-  _DB_HOST: '34.101.188.44'
-  _DB_NAME: 'tugas2'
-  _DB_USER: '123230008'
-  _DB_PASS: '160904_'
+  _DB_HOST: '34.172.113.167'
+  _DB_NAME: 'notes_123230008'
+  _DB_USER: 'admin'
+  _DB_PASS: 'mypassword'
 
 options:
   logging: CLOUD_LOGGING_ONLY
