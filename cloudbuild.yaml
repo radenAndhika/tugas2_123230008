@@ -44,7 +44,7 @@ substitutions:
   _DB_HOST: '34.101.188.44'
   _DB_NAME: 'tugas2'
   _DB_USER: '123230008'
-  _DB_PASS: ''   # Sebaiknya pakai Secret Manager, jangan taruh plain text
+  _DB_PASS: '160904_'
 
 options:
   logging: CLOUD_LOGGING_ONLY
