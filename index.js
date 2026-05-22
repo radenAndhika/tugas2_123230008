@@ -40,13 +40,22 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 
-  // Sync Database setelah server berjalan
-  sequelize.sync()
-    .then(() => {
-      console.log("Database synced successfully");
-    })
-    .catch((err) => {
-      console.error("Database sync failed:", err.message);
-      // Server tetap berjalan meski DB gagal connect
-    });
+  // Sync Database dengan retry
+  const syncDB = (attempt = 1) => {
+    sequelize.sync()
+      .then(() => {
+        console.log("Database synced successfully");
+      })
+      .catch((err) => {
+        console.error(`Database sync attempt ${attempt} failed:`, err.message);
+        if (attempt < 5) {
+          console.log(`Retrying in 5 seconds...`);
+          setTimeout(() => syncDB(attempt + 1), 5000);
+        } else {
+          console.error("Database sync failed after 5 attempts.");
+        }
+      });
+  };
+
+  syncDB();
 });
