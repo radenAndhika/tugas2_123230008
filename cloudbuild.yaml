@@ -32,7 +32,7 @@ steps:
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--port=3000'
-      - '--set-env-vars=DB_HOST=$_DB_HOST,DB_NAME=$_DB_NAME,DB_USER=$_DB_USER,DB_PASS=$_DB_PASS,PORT=3000'
+      - '--set-env-vars=DB_HOST=$_DB_HOST,DB_NAME=$_DB_NAME,DB_USER=$_DB_USER,DB_PASS=$_DB_PASS'
 
 # Image yang akan disimpan di Container Registry
 images:
