@@ -35,9 +35,18 @@ app.get("/app.js", (req, res) => {
 require("./schema/Note"); // Untuk generate Tabel Notes
 app.use("/api/v1/notes", noteRoutes); // Untuk setting routes notes
 
-// Sync Database dan Jalankan Server
+// Jalankan Server terlebih dahulu agar Cloud Run health check lulus
 const port = process.env.PORT || 3000;
-sequelize.sync().then(() => {
-  console.log("Database synced");
-  app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+
+  // Sync Database setelah server berjalan
+  sequelize.sync()
+    .then(() => {
+      console.log("Database synced successfully");
+    })
+    .catch((err) => {
+      console.error("Database sync failed:", err.message);
+      // Server tetap berjalan meski DB gagal connect
+    });
 });
